@@ -46,9 +46,4 @@
     return MGLPremultipliedImageFromCGImage(ref);
 }
 
-- (mbgl::UnassociatedImage)mgl_unassociatedImage {
-    CGImageRef ref = [self CGImageForProposedRect:nullptr context:nullptr hints:nullptr];
-    return MGLUnassociatedImageFromCGImage(ref);
-}
-
 @end
