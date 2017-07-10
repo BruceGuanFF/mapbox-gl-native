@@ -43,22 +43,6 @@ namespace mbgl {
 
 using namespace style;
 
-static auto rasterPrimitives() {
-    IndexedPrimitives<gl::Triangles, RasterLayoutVertex, RasterAttributes> primitives;
-    primitives.add(
-        {
-            RasterProgram::layoutVertex({ 0,            0            }, { 0,     0 }),
-            RasterProgram::layoutVertex({ util::EXTENT, 0            }, { 32767, 0 }),
-            RasterProgram::layoutVertex({ 0,            util::EXTENT }, { 0,     32767 }),
-            RasterProgram::layoutVertex({ util::EXTENT, util::EXTENT }, { 32767, 32767 }),
-        }, {
-            {{ 0, 1, 2 }},
-            {{ 1, 2, 3 }},
-        }
-    );
-    return primitives;
-}
-
 static auto borderPrimitives() {
     IndexedPrimitives<gl::LineStrip, DebugLayoutVertex, DebugAttributes> primitives;
     primitives.add(
@@ -116,7 +100,6 @@ Painter::Painter(gl::Context& context_,
                  const optional<std::string>& programCacheDir)
     : context(context_),
       state(state_),
-      rasterDrawable(context, rasterPrimitives()),
       fillDrawable(context, fillPrimitives()),
       borderDrawable(context, borderPrimitives()),
       extrusionTextureDrawable(context, extrusionTexturePrimitives()) {
