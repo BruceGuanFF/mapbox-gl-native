@@ -156,7 +156,7 @@ public:
     }
     
     SymbolSizeAttributes::Bindings attributeBindings() const override {
-        return SymbolSizeAttributes::Bindings { std::experimental::nullopt };
+        return SymbolSizeAttributes::Bindings { nullopt };
     }
 
     void upload(gl::Context&) override {}
